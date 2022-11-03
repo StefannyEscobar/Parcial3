@@ -1,31 +1,21 @@
 #!/usr/bin/env python3
 import math
 import numpy as np
-INF = math.inf
-
-class FloydWarshall:
-	def __init__(self, graph):
-		self.V = len(graph)
-		self.graph = graph
-
-	def floyd_warshall(self):
-
-		for k in range(self.V):
-			for i in range(self.V):
-				for j in range(self.V):
-					self.graph[i][j] = min(self.graph[i][j], self.graph[i][k] + self.graph[k][j])
-		return self
-	def printSolution(self):
-		print(np.array(self.graph))
-
-
+inf = math.inf
+def FloydWarshall(grafo):
+	for k in range(nodos):
+		for i in range(nodos):
+			for j in range(nodos):
+				grafo[i][j] = min(grafo[i][j], grafo[i][k] + grafo[k][j])
+	return np.array(grafo)
 
 if __name__ == "__main__":
-    graph = [[0, 2, INF, INF, -1],
-            [INF, 0, 1, INF, 4],
-            [INF, INF, 0, 3, INF],
-            [INF, INF, INF, 0, 7],
-            [INF, INF, INF, INF, 0]]
-    FloydWarshall(graph).floyd_warshall().printSolution()
+	grafo = [[0, 2, inf, inf, -1],
+            [inf, 0, 1, inf, 4],
+            [inf, inf, 0, 3, inf],
+            [inf, inf, inf, 0, 7],
+            [inf, inf, inf, inf, 0]]
+	nodos = len(grafo)
+	print(FloydWarshall(grafo))
 
 
